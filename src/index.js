@@ -17,8 +17,10 @@ app.use(express.static(publcicDirectoryPath))
 io.on('connection', (socket)=>{
     console.log('new websocket connection')
     socket.broadcast.emit('message', 'A new user has joined')
-    socket.on('message',(message)=>{
+    
+    socket.on('message',(message,callback)=>{
         io.emit('message', message)
+        callback('delivered')
     })
 
     socket.on('sendLocation',({lat,long})=>{
