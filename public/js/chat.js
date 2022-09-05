@@ -10,12 +10,22 @@ const $messages = document.querySelector("#messages")
 
 //templates
 const messageTemplate = document.querySelector('#message-template').innerHTML
+const locationTemplate = document.querySelector('#locationTemplate').innerHTML
+
 
 socket.on('message', (message)=>{
 
     console.log(message)
     const html = Mustache.render(messageTemplate,{
         message
+    })
+    $messages.insertAdjacentHTML('beforeend',html)
+})
+
+socket.on('location',(sendLocation)=>{
+    console.log(sendLocation)
+    const html = Mustache.render(locationTemplate,{
+        sendLocation
     })
     $messages.insertAdjacentHTML('beforeend',html)
 })
