@@ -17,9 +17,14 @@ app.use(express.static(publcicDirectoryPath))
 
 io.on('connection', (socket)=>{
     console.log('new websocket connection')
-    socket.emit('message',generateMessage('Welcome!'))
-    socket.broadcast.emit('message',generateMessage( 'A new user has joined'))
-    
+    socket.on('join', ({username,room})=>{
+        socket.join(room)
+
+        socket.emit('message',generateMessage('Welcome!'))
+        socket.broadcast.to(room).emit('message',generateMessage( `${username} has joined!` ))
+
+    })
+
     socket.on('message',(message,callback)=>{
         const filter = new Filter()
         if(filter.isProfane(message)){
@@ -47,3 +52,4 @@ io.on('connection', (socket)=>{
 server.listen(port, ()=>{
     console.log(`Listening on port ${port}`)
 })
+
