@@ -16,6 +16,17 @@ const sidebarTemplate = document.querySelector('#sidebar-template').innerHTML
 //options
 const {username,room}=  Qs.parse(location.search, {ignoreQueryPrefix:true})
 
+const autoScroll = ()=>{
+    //new messagee element
+    const $newMessage = $messages.lastElementChild
+
+    //height of the new value
+    const newMessageStyle = getComputedStyle($newMessage)
+    const newMessageMargin = parseInt(newMessageStyle.marginBottom)
+    const newMessageHeight = $newMessage.offsetHeight + newMessageMargin
+
+    console.log(newMessageMargin)
+}
 
 socket.on('message', (message)=>{
 
@@ -26,6 +37,7 @@ socket.on('message', (message)=>{
         createdAt: moment(message.createdAt).format('h:mm a')
     })
     $messages.insertAdjacentHTML('beforeend',html)
+    autoScroll()
 })
 
 socket.on('location',(response)=>{
@@ -36,6 +48,7 @@ socket.on('location',(response)=>{
         createdAt: moment(response.createdAt).format('h:mm a')
     })
     $messages.insertAdjacentHTML('beforeend',html)
+    autoScroll()
 })
 
 socket.on('roomData', ({room,users}) =>{
