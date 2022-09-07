@@ -14,7 +14,7 @@ const locationTemplate = document.querySelector('#locationTemplate').innerHTML
 
 
 //options
-const {username, room}=  Qs.parse(location.search, {ignoreQueryPrefix:true})
+const {username,room}=  Qs.parse(location.search, {ignoreQueryPrefix:true})
 
 
 socket.on('message', (message)=>{
@@ -76,4 +76,9 @@ $sendLocationButton.addEventListener('click', ()=>{
     })
 })
 
-socket.emit('join', {username,room})
+socket.emit('join', {username,room}, (error)=>{
+    if(error){
+        alert(error)
+        location.href = '/'
+    }
+})
