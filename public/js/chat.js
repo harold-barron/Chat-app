@@ -21,17 +21,19 @@ socket.on('message', (message)=>{
 
     console.log(message)
     const html = Mustache.render(messageTemplate,{
+        username: message.username,
         message: message.text,
         createdAt: moment(message.createdAt).format('h:mm a')
     })
     $messages.insertAdjacentHTML('beforeend',html)
 })
 
-socket.on('location',(location)=>{
-    console.log(location)
+socket.on('location',(response)=>{
+    console.log(response)
     const html = Mustache.render(locationTemplate,{
-        sendLocation: location.location,
-        createdAt: moment(location.createdAt).format('h:mm a')
+        username: response.username,
+        sendLocation: response.location,
+        createdAt: moment(response.createdAt).format('h:mm a')
     })
     $messages.insertAdjacentHTML('beforeend',html)
 })
