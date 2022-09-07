@@ -1,27 +1,19 @@
 const users = []
 
-//addUser, removeUSer, getUser, getUserInRoom
-
-
 const addUser = ({id,username,room})=>{
     //Clean the data
     username = username.trim().toLowerCase()
     room = room.trim().toLowerCase()
-
-
     //Validate data
-
     if (!username || !room){
         return{
             error: 'Username and room are required'
         }
     }
     //check for existing user
-
     const existingUser = users.find((user)=>{
         return user.room === room && user.username === username
     })
-
     //validate Username
     if (existingUser){
         return {
@@ -52,20 +44,9 @@ const getUserInRoom = (room)=>{
     return users.filter((user) => user.room === room)
 }
 
-addUser({
-    id:1,
-    username:'h',
-    room:'r1'
-})
-addUser({
-    id:3,
-    username:'h3',
-    room:'r1'
-})
-addUser({
-    id:1,
-    username:'h2',
-    room:'r2'
-})
-
-console.log(getUserInRoom('r2'))
+module.exports = {
+    addUser,
+    removeUser,
+    getUser,
+    getUserInRoom
+}
