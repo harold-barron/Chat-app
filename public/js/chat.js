@@ -27,6 +27,10 @@ const autoScroll = ()=>{
 
     //vsibible height
     const vsibibleHeight = $messages.offsetHeight
+
+    //height of messages container
+    const contentHeight = $messages.scrollHeight
+
     console.log(newMessageMargin)
 }
 
