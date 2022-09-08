@@ -10,10 +10,12 @@ const getRooms = (room)=>{
     // console.log(rooms)
     return {rooms}   
 }
-
+const aviableRooms = () =>{
+   return rooms
+}
 const deleteRooms = (roomName,users)=>{
-    console.log(`${roomName}`)
-    console.log(users)
+    // console.log(`${roomName}`)
+    // console.log(users)
     if(users){
         
        const isARoom = users.find((user) => user.room === roomName)
@@ -30,5 +32,6 @@ const deleteRooms = (roomName,users)=>{
 
 module.exports = {
     getRooms,
-    deleteRooms
+    deleteRooms,
+    aviableRooms
 }
