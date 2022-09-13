@@ -5,9 +5,9 @@ const addUser = ({id,username,room})=>{
     username = username.trim().toLowerCase()
     room = room.trim().toLowerCase()
     //Validate data
-    if (!username || !room){
+    if (!username){
         return{
-            error: 'Username and room are required'
+            error: 'Username are required'
         }
     }
     //check for existing user

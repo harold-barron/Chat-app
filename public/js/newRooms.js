@@ -1,10 +1,10 @@
 const socket = io() 
 
-
-//elements
+//login elements
+const $outerForm = document.querySelector('#avRooms')
 const $loginForm = document.querySelector('#avRooms')
 
-//templates
+//login templates
 const loginTemplate = document.querySelector('#login-template').innerHTML
 
 socket.on('joiningPage',(message1=>{
@@ -19,3 +19,13 @@ socket.on('joiningPage',(message1=>{
     $loginForm.innerHTML = html
     // console.log('html',html)
 }))
+
+$outerForm.addEventListener('click', (e)=>{
+    e.preventDefault()
+    roomSelected= e.target.value
+    // console.log(roomSelected)
+    if(roomSelected !== 'undefined'){
+        console.log(roomSelected)
+        socket.emit('roomSelected',roomSelected)
+    }
+})

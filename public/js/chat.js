@@ -15,6 +15,9 @@ const sidebarTemplate = document.querySelector('#sidebar-template').innerHTML
 
 //options
 const {username,room}=  Qs.parse(location.search, {ignoreQueryPrefix:true})
+// let isNewRoom = []
+
+
 
 const autoScroll = ()=>{
     //new messagee element
@@ -76,7 +79,7 @@ $messageForm.addEventListener('submit',(e)=>{
     $messageFormButton.setAttribute('disabled','disabled')
     //disable
     const message = e.target.elements.message.value
-    
+
     socket.emit('message',message, (error)=>{
         $messageFormButton.removeAttribute('disabled')
         $messageFormInput.value = ''
@@ -110,8 +113,12 @@ $sendLocationButton.addEventListener('click', ()=>{
         
     })
 })
-
-socket.emit('join', {username,room}, (error)=>{
+socket.on('repeatedName', (message)=>{
+    alert(message)
+    location.href = '/'
+})
+socket.emit('join', {username,room}, (error)=>{    
+    
     if(error){
         alert(error)
         location.href = '/'

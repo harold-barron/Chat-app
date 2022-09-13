@@ -15,9 +15,9 @@
             <h1>Join</h1>
             <form id="login-form" action="/chat.html">
                 <label for="">Display name</label>
-                <input type="text" name="username" placeholder="Display name" required>
+                <input type="text" name="username" id="username" placeholder="Display name" required>
                 <label for="">Room</label>
-                <input type="text" name="room" placeholder="Room" required>
+                <input type="text" name="room" id="roomNameText" placeholder="Room" >
                 <div id="avRooms"></div>
                 <button>Join</button>
             </form>
@@ -25,16 +25,18 @@
     </div>
     <script id="login-template" type="text/html">
         
-            <select name="rooms" id="">
+            <select name="rooms" id="select-click">
                 {{#aviableRooms}}
-                <option value="">{{roomName}}</option>
+                <option value="undefined" selected></option>
+                <option value="{{roomName}}" >{{roomName}}</option>
                 {{/aviableRooms}}
             </select>
         
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.1/mustache.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
-    <script src = "/socket.io/socket.io.js"></script>
-    <script src="/js/rooms.js"></script>
+    <script src = "/socket.io/socket.io.js"></script>}
+    <script src="/js/newRooms.js"></script>
+    
 </body>
 </html>

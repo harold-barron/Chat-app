@@ -1,7 +1,8 @@
 let rooms = []
-
+let roomSelected =  []
+// const trackUsers = require('./trackUsers')
 const getRooms = (room)=>{
-
+    console.log(room)
     const roomName = room.trim().toLowerCase()
     const isNewRoom = rooms.find((room) => room.roomName === roomName)
     if(!isNewRoom){
@@ -30,8 +31,34 @@ const deleteRooms = (roomName,users)=>{
     
 }
 
+const getSelectedRoom = (selectedRoom)=>{
+    // console.log(roomSelected)
+    console.log(selectedRoom)
+    if(selectedRoom){
+        roomSelected.push(selectedRoom)
+    }
+    return {roomSelected}
+   
+}
+
+const sendNewRoom = ()=>{
+    if(roomSelected && roomSelected.length>0 ){
+        return roomSelected
+    }
+    return roomSelected = null
+}
+
+const deleteNewRoom = (roomName)=>{
+    // console.log(`${roomName}`)
+    // console.log(users)
+    return roomSelected = []  
+}
+
 module.exports = {
     getRooms,
     deleteRooms,
-    aviableRooms
+    aviableRooms,
+    getSelectedRoom,
+    sendNewRoom,
+    deleteNewRoom
 }
