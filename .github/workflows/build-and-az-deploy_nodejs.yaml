@@ -2,8 +2,8 @@ name: Build and Deploy
 
 on:
   # Uncomment the following lines to enable the workflow on push to the main branch
-  # push:
-  #   branches: [ "main" ]
+   push:
+     branches: [ "main" ]
   workflow_dispatch:
 
 jobs:
