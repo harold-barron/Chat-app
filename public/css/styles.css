@@ -32,7 +32,7 @@ label {
 }
 
 input {
-    border: 1px solid #f71818;
+    border: 1px solid #1f1919;
     padding: 12px; 
     outline: none;
 }
@@ -40,7 +40,7 @@ input {
 button {
     cursor: pointer;
     padding: 12px;
-    background: #7C5CBF;
+    background: #077c85;
     border: none;
     color: white;
     font-size: 16px;
