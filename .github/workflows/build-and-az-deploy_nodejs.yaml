@@ -15,7 +15,7 @@ jobs:
   deploy:
     needs: build
     uses: harold-barron/actions/.github/workflows/deploy_Node_Azure.yaml@main
-    secrets: inherit
+    
     with: 
-      app-name: ${{ secrets.AZURE_WEBAPP_NAME }}
+      secrets: inherit
       
