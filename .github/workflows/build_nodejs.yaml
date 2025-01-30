@@ -7,6 +7,6 @@ on:
 
 jobs:
   call-reusable-build-workflow:
-    uses: harold-barron/actions/.github/workflows/build_Node_Azure.yaml@main
+    uses: harold-barron/actions/.github/workflows/build_Node.yaml@main
     with:
       package-path: .
