@@ -1,0 +1,12 @@
+name: Use Reusable Build Workflow
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  call-reusable-build-workflow:
+    uses: harold-barron/actions/.github/workflows/build_Node_Azure.yaml@main
+    with:
+      package-path: .
