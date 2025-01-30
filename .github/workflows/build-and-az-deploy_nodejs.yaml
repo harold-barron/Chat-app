@@ -18,4 +18,4 @@ jobs:
     secrets: inherit
     with: 
       app-name: ${{ secrets.AZURE_WEBAPP_NAME }}
-      azure-credentials: ${{ secrets.AZURE_CREDENTIALS }}
+      
