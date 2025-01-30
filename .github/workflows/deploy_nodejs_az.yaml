@@ -1,0 +1,15 @@
+name: Use Reusable Deploy Workflow
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  call-reusable-deploy-workflow:
+    needs: call-reusable-build-workflow
+    uses: harold-barron/actions/.github/workflows/deploy_Node_Azure.yaml@main
+    with:
+      app-name: ${{ secrets.AZURE_WEBAPP_NAME }}
+    secrets:
+      AZURE_CREDENTIALS: ${{ secrets.AZURE_CREDENTIALS }}
